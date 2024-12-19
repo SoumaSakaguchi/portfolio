@@ -204,6 +204,13 @@ img {
 /*--------------------------------
  Skill
 ---------------------------------*/
+.skill-subtitle {
+  font-size: 1.2rem; /* サブタイトルの文字サイズ */
+  margin: 40px 0 20px; /* 上下の余白 */
+  text-align: left; /* 左揃え */
+  color: #333; /* サブタイトルの色 */
+}
+
 .skill-list {
   display: flex;
   flex-wrap: wrap;
