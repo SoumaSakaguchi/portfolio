@@ -291,6 +291,18 @@ img {
 .contact-text {
   margin-top: 10px;
 }
+
+@media screen and (max-width: 768px) {
+  .contact {
+    display: block; /* 親コンテナをブロック要素化 */
+  }
+
+  .contact-item {
+    display: block; /* 各アイテムを縦並びにする */
+    margin-right: 0; /* 横並び用の右余白を無効化 */
+    margin-bottom: 10px; /* 下に余白を追加 */
+  }
+}
 /*--------------------------------
  ページトップ
 ---------------------------------*/
