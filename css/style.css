@@ -201,6 +201,24 @@ img {
   margin-bottom: 30px;
 }
 
+.profile-history {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+.history-item {
+  display: flex;
+  gap: 20px;
+}
+.date {
+  min-width: 100px;
+  font-weight: bold;
+}
+.detail {
+  flex: 1;
+}
+
 /*--------------------------------
  Skill
 ---------------------------------*/
