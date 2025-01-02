@@ -54,13 +54,31 @@
 			  <a href="https://soumasakaguchi.github.io/portfolio/research.html" target="_blank" rel="noopener">異種OS機能連携のためのセキュアコンテナネットワーキング機構の実現</a>を達成するために、Network Namespace互換機能の実現する必要がある。FreeBSDでのネットワークスタック分離機能であるvnetと、jailの入れ子構造を利用することでNetwork Namespace互換機能を実現する。このNetwork Namespace機能をOCI準拠jailランタイムであるrunjに実装することで、FreeBSDで単一ノード上コンテナ間通信が実現した。
             </p>
             <h3>背景</h3>
-            <p>
-			  背景が入ります。背景が入ります。
-			</p>
-            <h3>解決する課題</h3>
-            <p>
-			  課題が入ります。課題が入ります。
-			</p>
+			<ul>
+			  <li>
+			    異種OS機能連携によるセキュアコンテナを実現するにあたって、Netwrok Namespaceが必要
+				<ul>
+				  <li>複数コンテナが1つのネットワークスタックをを共有するために必要</li>
+				  <li>KubernetesのPodやサイドカーコンテナとして利用</li>
+				</ul>
+			  </li>
+			  <li>Linuxコンテナネットワーキングの標準規格であるCNIへの準拠が必要</li>
+			</ul>
+            <h3>課題</h3>
+			<ul>
+			  <li>
+			    FreeBSDのネットワークスタック分離機能であるvnetは、複数のjailが同居することが不可能
+			    <ul>
+				  <li>vnetとjailは1-1対応になっている</li>
+				</ul>
+			  </li>
+			  <li>
+			    CNIコアプラグインは一部FreeBSDでも利用可能だが、Linuxと同等の操作を行えるようにする必要がある
+				<ul>
+				  <li>分離されたネットワークスタックの指定方法に差異</li>
+				</ul>
+			  </li>
+			</ul>
             <h3>実装</h3>
             <p>
               <img src="img/runj-imp.png" alt="">
