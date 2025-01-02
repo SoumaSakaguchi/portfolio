@@ -47,30 +47,37 @@
           <h2 class="article-title">Rustの学習を兼ねたjailランタイム</h2>
           <div class="article-body">
             <p>
-              <img src="img/works-sample.jpg" alt="">
+              <img src="img/rust-jail.png" alt="">
             </p>
             <p>
 			  <b>キーワード：</b> Rust / FreeBSD / コンテナランタイム<br>
-			  概要が入ります。概要が入ります。
+			  Rustの学習を兼ねたFreeBSD jailランタイムを実装した。Rustはそのメモリ安全性やスレッド安全性などからシステムプラグラミングのための言語として流行っていることから、コードを実際に書くことで学習をしようと考えた。現在実装中であり、コンテナランタイムに必要となる機能を追加している。
             </p>
             <h3>背景</h3>
-            <p>
-			  背景が入ります。背景が入ります。
-			</p>
+			<ul>
+			  <li>Rustはメモリ安全性やスレッド安全性などからシステムプログラミングのための言語として台頭</li>
+			  <li>
+			    コードを実際に書くことで、Rustの良さを学習
+				<ul>
+				  <li>今回はFreeBSD上で利用可能なjailランタイムを作成</li>
+				  <li>実装がうまく行けば、研究にも利用可能と想定</li>
+				</ul>
+			  </li>
+			</ul>
             <h3>実装</h3>
-            <p>
-			  実装が入ります。実装が入ります。
-            </p>
+			<ul>
+			  <li>アプリケーションや設定ファイルを受け取るためのコマンド・オプション作成機構（clap crate）</li>
+			  <li>設定ファイルを読み取る機構</li>
+			  <li>コンテナ内アプリケーションを動作させるためのスレッドの利用</li>
+			  <li>jailシステムコールを呼び出す機構（libc crate）</li>
+			</ul>
 			<h3>頑張った点</h3>
-			<p>
-			  頑張った点が入ります。頑張った点が入ります。
-			</p>
-            <h3>今後の課題</h3>
-            <p>
-			  今後の課題が入ります。今後の課題が入ります。
-            </p>
+			<ul>
+			  <li>Rustを学習するために実際に手を動かすことができた</li>
+			  <li>スレッド作成やシステムコール呼び出しの簡単さを理解することができた</li>
+			</ul>
             <h3>URL</h3>
-            <p><a href="https://yahoo.co.jp" target="_blank" rel="noopener">https://yahoo.co.jp</a></p>
+            <p><b>Rust-run-jail (GitHub)：</b><a href="https://github.com/SoumaSakaguchi/rust-run-jail" target="_blank" rel="noopener">https://github.com/SoumaSakaguchi/rust-run-jail</a></p>
           </div>
           <div class="home-link">
             <a href="./#works">Works一覧へ</a>
