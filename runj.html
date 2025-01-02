@@ -83,15 +83,47 @@
             <p>
               <img src="img/runj-imp.png" alt="">
             </p>
-            <p>
-			  実装が入ります。実装が入ります。
-            </p>
+			<ul>
+			  <li>
+			    FreeBSDでjailを作成できる低レベルコンテナランタイムであるrunjに、Network Namespace互換機能を実装
+				<ul>
+				  <li>vnet jailにjailを入れ子構造でで作成することで、Network Namespace互換とする</li>
+				  <li>vnet jail内にjailを複数入れ子構築することで、1つのネットワークスタックを共有可能</li>
+				  <li>Network Namespace互換を管理するファイル等も用意することで、Linuxと同等の管理インタフェースを用意</li>
+				</ul>
+			  </li>
+			  <li>
+			    CNIコアプラグインを、実装したNetwork Namespace互換機能を指定できるように改良
+				<ul>
+				  <li>bridgeプラグインをNetwork Namespace互換に対応させた</li>
+				  <li>nerdctl + containerdを用いた動作確認</li>
+				</ul>
+			  </li>
+			</ul>
+			<h3>評価</h3>
+			<ul>
+			  <li>
+			    仮想ブリッジを用いた従来のjail間通信とNetwork Namespace互換を用いたjail間通信を比較
+				<ul>
+				  <li>Network Namespace互換を用いたjail間通信の方が通信スループットが向上<br>→ネットワークスタックを共有したことによる通信特性の変化</li>
+				</ul>
+			  </li>
+			  <li>
+			    jailの入れ子によるアプリケーションへの影響をUnixベンチマークによって評価
+			    <ul>
+				  <li>性能に大きな影響は見られなかった<br>→入れ子構造を用いたNetwork Namespace互換は、jail内アプリケーションに与える影響が少なく済んでいる</li>
+				</ul>
+			  </li>
+			</ul>
 			<h3>頑張った点</h3>
-			<p>
-			  頑張った点が入ります。頑張った点が入ります。
-			</p>
+			<ul>
+			  <li>vnetと入れ子構造に着目したNetwork Namespace互換の構造を提案することで、大きく改変を加えることなくNetwork Namespace互換を実現できた</li>
+			  <li>インフラに興味を持ってから最初のWorkであり、わからないことを調べ、それを実際に動かして確認するということの大切さを学ぶことができた</li>
+			  <li>学会発表などを通して、他者へわかりやすく伝える力を培うことができた</li>
+			</ul>
             <h3>URL</h3>
-            <p><a href="https://yahoo.co.jp" target="_blank" rel="noopener">https://yahoo.co.jp</a></p>
+            <p><b>runj (Github)：</b><a href="https://github.com/SoumaSakaguchi/souma-runj-pablic" target="_blank" rel="noopener">https://github.com/SoumaSakaguchi/souma-runj-pablic</a></p>
+            <p><b>cni-plugin (Github)：</b><a href="https://github.com/SoumaSakaguchi/souma-cni-plugin-pablic" target="_blank" rel="noopener">https://github.com/SoumaSakaguchi/souma-cni-plugin-pablic</a></p>
           </div>
           <div class="home-link">
             <a href="./#works">Works一覧へ</a>
