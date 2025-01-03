@@ -418,7 +418,7 @@ img {
 }
 
 .article-body ul ul {
-  list-style-type: "-";
+  list-style-type: "- ";
   margin-left: 20px;
 }
 
