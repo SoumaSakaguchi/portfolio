@@ -69,7 +69,7 @@
             </p>
 			<ul>
 			  <li>
-			    <a href="https://soumasakaguchi.github.io/portfolio/runj.html">Network Namespace互換機能の実現</a>では、単一ノード上のコンテナ間通信を実現
+			    <a href="https://soumasakaguchi.github.io/portfolio/runj.html">Network Namespace互換機能の実現</a>では、単一ノード上のコンテナ間通信を実現したが...
 			    <ul>
 				  <li>vnetとjailの入れ子構造を利用したNetwork Nameespace互換機能</li>
 				  <li>CNIコアプラグインの利用</li>
@@ -87,9 +87,41 @@
             <p>
               <img src="img/calico-imp.png" alt="">
             </p>
-            <p>
-			  実装が入ります。実装が入ります。
-            </p>
+			<ul>
+			  <li>
+			    Calicoを用いたコンテナネットワーキングの構築をFreeBSDで行うために以下の実装が必要
+				<ul>
+				  <li>Calico Pluginの移植</li>
+				  <li>Felixの移植</li>
+				  <li>Calico-BIRDの移植</li>
+				  <li>Dockerの排除</li>
+				  <li>Network Namespace互換機能への対応</li>
+				</ul>
+			  </li>
+			</ul>
+			<h4>Calico Pluginの移植</h4>
+			<p>
+			  高レベルコンテナランタイムやコンテナオーケストレーターから実行するバイナリとなるCNIプラグインの移植が必要となる。仮想インタフェースの作成やNetwork Namespace互換への接続を行うcalicoバイナリと、IPアドレスの割当を行うcalico-ipamバイナリそれぞれを移植する。実装では、LinuxとFreeBSDのネットワークスタックの差異を吸収する工夫が必要となる。
+			</p>
+			<h4>Felixの移植</h4>
+			<p>
+			  Calicoの機能の中枢をになるFelixの移植が必要となる。Felixはiptablesの制御を担うが、FreeBSDではiptablesが存在しないため、iptablesと同等の機能を持つpfというファイアウォールを利用する。そのためiptablesのルールをpfのルールに変換する機構を実装する。
+			</p>
+			<p>
+			  また、Felixは、NetlinkやNetwork Namespaceの操作をGo言語から行うことから、netlink packageやnetns packeageのFreeBSD移植が必要となる。これらはLinuxの機能に依存している箇所もあるため、FreeBSD用のパッケージを再実装しなければならない。現在はnetlink packageの機能を絞った再実装と、netns packageをvnetの操作に変換したvnet packageの実装を行っている。
+			</p>
+			<h4>Calico-BIRDの移植</h4>
+			<p>
+			  BIRDはBGPの通信を行うために用いられ、FreeBSDでも利用可能である。しかしCalico用に一部改変したBIRDであるCalico-BIRDはFreeBSDでは利用できない。そこで、FreeBSDで利用できるBIRDを参考に、Calico-BIRDの移植を行った。すでにFreeBSDでの動作を確認できているため、他の機能コンポーネントが完成次第、全体の動作を確認する。
+			</p>
+			<h4>Dockerの排除</h4>
+			<p>
+			  Calicoの機能コンポーネントをまとめたCalico-nodeを実行するためには、Dockerを利用する必要がある。しかしFreeBSDでは、Dockerの利用が難しいため、正常に動作する、かつDocker互換であるnerdctlを用いるように改変を行った。すでにFreeBSDでの動作を確認できているため、他の機能コンポーネントが完成次第、全体の動作を確認する。
+			</p>
+			<h4>Network Namespace互換機能への対応</h4>
+			<p>
+			  <a href="https://soumasakaguchi.github.io/portfolio/runj.html">Network Namespace互換機能の実現</a>で実現した、Network Namespace互換を利用するような実装を行う。これは、Calico PluginやFelixなどの機能コンポーネントの実装に影響してくるため、vnet packageを利用することを想定している。
+			</p>
 			<h3>頑張った点</h3>
 			<p>
 			  頑張った点が入ります。頑張った点が入ります。
