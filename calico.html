@@ -96,7 +96,7 @@
 			  Calicoの機能の中枢をになるFelixの移植が必要となる。Felixはiptablesの制御を担うが、FreeBSDではiptablesが存在しないため、iptablesと同等の機能を持つpfというファイアウォールを利用する。そのためiptablesのルールをpfのルールに変換する機構を実装する。
 			</p>
 			<p>
-			  また、Felixは、NetlinkやNetwork Namespaceの操作をGo言語から行うことから、netlink packageやnetns packeageのFreeBSD移植が必要となる。これらはLinuxの機能に依存している箇所もあるため、FreeBSD用のパッケージを再実装しなければならない。現在はnetlink packageの機能を絞った再実装と、netns packageをvnetの操作に変換したvnet packageの実装を行っている。
+			  また、Felixは、NetlinkやNetwork Namespaceの操作をGo言語から行うことから、netlink packageやnetns packeageのFreeBSD移植が必要となる。これらはLinuxの機能に依存している箇所もあるため、FreeBSD用のパッケージを再実装しなければならない。現在はnetlink packageの機能を絞った再実装と、netns packageをvnetの操作に変換したvnet packageの実装を行っている。同時に、UnixパッケージやSyscallパッケージなどのGoパッケージに足りない部分もFreeBSD対応していく。
 			</p>
 			<h4>Calico-BIRDの移植</h4>
 			<p>
@@ -111,15 +111,30 @@
 			  <a href="https://soumasakaguchi.github.io/portfolio/runj.html">Network Namespace互換機能の実現</a>で実現した、Network Namespace互換を利用するような実装を行う。これは、Calico PluginやFelixなどの機能コンポーネントの実装に影響してくるため、vnet packageを利用することを想定している。
 			</p>
 			<h3>頑張った点</h3>
-			<p>
-			  頑張った点が入ります。頑張った点が入ります。
-			</p>
+			<ul>
+			  <li>やるべきことの列挙をしたことで全容を確認し、計画をたてることができた</li>
+			  <li>過去に実装したNetwork Namespace互換を再利用する形で実装できた</li>
+			  <li>CalicoのFreeBSD対応やFreeBSDで利用可能なパッケージの作成など、多方へのオープンソースの貢献ができる</li>
+			</ul>
             <h3>今後の課題</h3>
-            <p>
-			  課題が入ります。課題が入ります。
-            </p>
+			<ul>
+			  <li>
+			    実装できていない部分の実装
+				<ul>
+				  <li>Calico Pluginの移植</li>
+				  <li>Felixの移植</li>
+				</ul>
+			  </li>
+			  <li>オープンソースへのコミット</li>
+			  <li>評価</li>
+			</ul>
             <h3>URL</h3>
-            <p><a href="https://yahoo.co.jp" target="_blank" rel="noopener">https://yahoo.co.jp</a></p>
+            <p>
+			  <b>Calico (Github)：</b><a href="https://github.com/SoumaSakaguchi/souma-calico-public" target="_blank" rel="noopener">https://github.com/SoumaSakaguchi/souma-calico-public</a><br>
+			  <b>BIRD (Github)：</b><a href="https://github.com/SoumaSakaguchi/souma-calico-bird-public" target="_blank" rel="noopener">https://github.com/SoumaSakaguchi/souma-calico-bird-public</a><br>
+			  <b>netlink (Github)：</b><a href="https://github.com/SoumaSakaguchi/netlink-public" target="_blank" rel="noopener">https://github.com/SoumaSakaguchi/netlink-public</a><br>
+			  <b>vnet (Github)：</b><a href="https://github.com/oss-fun/vnet" target="_blank" rel="noopener">https://github.com/oss-fun/vnet</a>
+			</p>
           </div>
           <div class="home-link">
             <a href="./#works">Works一覧へ</a>
