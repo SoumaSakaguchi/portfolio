@@ -56,9 +56,9 @@
             <h3>背景</h3>
 			<ul>
 			  <li>
-			    異種OS機能連携によるセキュアコンテナをクラウドコンピューティング基盤上で利用することを想定
+			    異種OS機能連携によるセキュアコンテナのクラウドコンピューティング基盤上での利用を想定
 			    <ul>
-				  <li>マイクロサービスアーキテクチャのような、複数ノード上のコンテナが相互通信するシステム構成への対応</li>
+				  <li>マイクロサービスアーキテクチャのような、コンテナが相互通信するシステム構成への対応</li>
 		        </ul>
 			  </li>
 			  <li>Linuxと同等の複数ノードをまたぐコンテナ間通信の実現が必要不可欠</li>
@@ -67,9 +67,22 @@
             <p>
               <img src="img/calico-pro.png" alt="">
             </p>
-            <p>
-			  課題が入ります。課題が入ります。
-			</p>
+			<ul>
+			  <li>
+			    <a href="https://soumasakaguchi.github.io/portfolio/runj.html">Network Namespace互換機能の実現</a>では、単一ノード上のコンテナ間通信を実現
+			    <ul>
+				  <li>vnetとjailの入れ子構造を利用したNetwork Nameespace互換機能</li>
+				  <li>CNIコアプラグインの利用</li>
+				</ul>
+			  </li>
+			  <li>
+			    現状では、複数ノードをまたいだコンテナ間通信が実現不可能
+			    <ul>
+				  <li>Linuxでは、CalicoというCNIプラグインで実現</li>
+				  <li>Calicoに必要となる機能モジュールもFreeBSD対応していないことがほとんど</li>
+				</ul>
+			  </li>
+			</ul>
             <h3>実装</h3>
             <p>
               <img src="img/calico-imp.png" alt="">
