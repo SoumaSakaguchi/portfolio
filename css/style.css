@@ -417,6 +417,11 @@ img {
   margin-bottom: 10px;
 }
 
+.article-body ul ul {
+  list-style-type: "-";
+  margin-left: 20px;
+}
+
 .article-body ul li {
   font-size: 15px;
   line-height: 1.8;
