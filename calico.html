@@ -87,18 +87,6 @@
             <p>
               <img src="img/calico-imp.png" alt="">
             </p>
-			<ul>
-			  <li>
-			    Calicoを用いたコンテナネットワーキングの構築をFreeBSDで行うために以下の実装が必要
-				<ul>
-				  <li>Calico Pluginの移植</li>
-				  <li>Felixの移植</li>
-				  <li>Calico-BIRDの移植</li>
-				  <li>Dockerの排除</li>
-				  <li>Network Namespace互換機能への対応</li>
-				</ul>
-			  </li>
-			</ul>
 			<h4>Calico Pluginの移植</h4>
 			<p>
 			  高レベルコンテナランタイムやコンテナオーケストレーターから実行するバイナリとなるCNIプラグインの移植が必要となる。仮想インタフェースの作成やNetwork Namespace互換への接続を行うcalicoバイナリと、IPアドレスの割当を行うcalico-ipamバイナリそれぞれを移植する。実装では、LinuxとFreeBSDのネットワークスタックの差異を吸収する工夫が必要となる。
